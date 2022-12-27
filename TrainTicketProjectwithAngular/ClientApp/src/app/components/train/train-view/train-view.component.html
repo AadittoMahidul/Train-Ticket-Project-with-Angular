@@ -1,0 +1,61 @@
+<mat-card class="mat-elevation-z3">
+    <mat-card-header>
+        
+           <img mat-card-avatar src="../../../../assets/diesel-train-svgrepo-com.svg"/>
+        
+        <mat-card-title>Trains</mat-card-title>
+        <mat-card-subtitle>List of trains</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="right">
+            <a mat-mini-fab [routerLink]="['/train-create']">
+                <mat-icon>add</mat-icon>
+            </a>
+        </div>
+     <mat-table [dataSource]="dataSource" matSort>
+       
+            <ng-container matColumnDef="picture">
+                <mat-header-cell *matHeaderCellDef >
+                    
+                </mat-header-cell>
+                <mat-cell *matCellDef="let element"><img class="circle-img" src="{{picPath}}/{{element.picture}}" style="width: 40px;" /></mat-cell>
+
+            </ng-container>
+            <ng-container matColumnDef="trainName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Train Name</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.trainName}}</mat-cell>
+
+            </ng-container>
+            <ng-container matColumnDef="startingPoint">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Starting Point</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.startingPoint}}</mat-cell>
+
+            </ng-container>
+            <ng-container matColumnDef="destination">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Destination</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.destination}}</mat-cell>
+
+            </ng-container>
+          
+            <ng-container matColumnDef="isAvailable">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Available</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.isAvailable ? 'Yes': 'No'}}</mat-cell>
+
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>...</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <a [routerLink]="['/train-edit', element.trainId]"><mat-icon>edit</mat-icon></a>
+                    <button [disabled]="!element.canDelete" mat-icon-button (click)="confirmDelete(element)"><mat-icon>delete</mat-icon></button>
+                </mat-cell>
+
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+    
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20, 40]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+
+    </mat-card-content>
+</mat-card>
+

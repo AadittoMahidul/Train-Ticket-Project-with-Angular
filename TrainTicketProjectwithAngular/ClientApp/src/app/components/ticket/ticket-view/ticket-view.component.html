@@ -1,0 +1,71 @@
+<mat-card class="mat-elevation-z3">
+    <mat-card-header>
+        
+           <img mat-card-avatar src="../../../../assets/ticket-svgrepo-com1.svg"/>
+        
+        <mat-card-title>Tickets</mat-card-title>
+        <mat-card-subtitle>Ticket List</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="right">
+            <a mat-mini-fab [routerLink]="['/ticket-create']">
+                <mat-icon>add_box</mat-icon>
+            </a>
+        </div>
+        <mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="passengerName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Passenger Name</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.passengerName}}</mat-cell>
+
+            </ng-container>
+            <ng-container matColumnDef="journeyDate">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Journey Date</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.journeyDate|date:'yyyy-MM-dd'}}</mat-cell>
+            </ng-container>
+       
+        <ng-container matColumnDef="category">
+            <mat-header-cell *matHeaderCellDef>Ticket Category</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{getCategoryName(element.category)}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <mat-header-cell *matHeaderCellDef>Ticket Price</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.price}}</mat-cell>
+        </ng-container>
+
+        <!-- <mat-form-field appearance="fill" class="f-w mb-1">
+            <mat-label>Price</mat-label>
+            <input matInput formControlName="price">
+            <mat-error *ngIf="productForm.controls['price'].hasError('required')"><strong>Price</strong> required</mat-error>          
+        </mat-form-field> -->
+          
+            <ng-container matColumnDef="ticketValue">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Total Value</mat-header-cell>
+                <mat-cell *matCellDef="let element">{{element.ticketValue}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="details">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>View Details</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <a title="view deails" [routerLink]="['/ticket-details', element.ticketId]"><mat-icon>info</mat-icon></a>
+                   
+                </mat-cell>
+
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>...</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <a [routerLink]="['/ticket-edit', element.ticketId]"><mat-icon>edit</mat-icon></a>
+                    <button  mat-icon-button (click)="confirmDelete(element)"><mat-icon>delete</mat-icon></button>
+                </mat-cell>
+
+            </ng-container>
+            <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+    
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20, 40]" [pageSize]="5" showFirstLastButtons></mat-paginator>
+
+    </mat-card-content>
+</mat-card>
+

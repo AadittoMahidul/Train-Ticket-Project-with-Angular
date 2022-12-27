@@ -1,0 +1,54 @@
+<mat-card class="mat-elevation-z3">
+    <mat-card-header>
+
+        <img mat-card-avatar src="../../../../assets/diesel-train-svgrepo-com.svg" />
+
+        <mat-card-title>Add Train</mat-card-title>
+        <mat-card-subtitle>Add new train entry</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+        <form [formGroup]="trainForm" class="form-container" (ngSubmit)="save()">
+            <mat-form-field appearance="fill" class="f-w mb-1">
+                <mat-label>Train Name</mat-label>
+                <input matInput formControlName="trainName">
+                <mat-error *ngIf="trainForm.controls['trainName'].hasError('required')"><strong>Train
+                        name</strong> is required</mat-error>
+                
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="f-w mb-1">
+                <mat-label>Starting Point</mat-label>
+                <input matInput formControlName="startingPoint">
+                <mat-error *ngIf="trainForm.controls['startingPoint'].hasError('required')"><strong>Starting Point</strong> is required</mat-error>      
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="f-w mb-1">
+                <mat-label>Destination</mat-label>
+                <input matInput formControlName="destination">
+                <mat-error *ngIf="trainForm.controls['destination'].hasError('required')"><strong>Destination</strong> is required</mat-error>      
+            </mat-form-field>
+
+            <div class="f-w mb-1">
+                <mat-checkbox formControlName="isAvailable" class="c-m" >Available</mat-checkbox>
+              </div>
+
+              <mat-form-field appearance="standard" class="f-w mb-1">
+                <mat-label>Picture</mat-label>
+                <ngx-mat-file-input formControlName="picture" color="primary">
+                    
+                </ngx-mat-file-input>
+                <mat-icon matSuffix>image</mat-icon>
+                <mat-error *ngIf="trainForm.controls['picture'].errors">Image is <strong>required</strong></mat-error>
+              </mat-form-field>
+
+            <div class="f-w mb-1">
+               <button type="submit" mat-raised-button color="primary" [disabled]="trainForm.invalid"><mat-icon>save</mat-icon>Save</button>
+            </div>
+        </form>
+
+
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-flat-button [routerLink]="['/trains']">Back to list</a>
+    </mat-card-actions>
+</mat-card>

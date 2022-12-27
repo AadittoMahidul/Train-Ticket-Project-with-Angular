@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "17fdf412-f724-47db-ab9a-7a48044270fe": {
+      "ProjectGuid": "17fdf412-f724-47db-ab9a-7a48044270fe",
+      "DisplayName": "TrainTicketProjectwithAngular",
+      "ColorIndex": 0
+    },
+    "88c46624-97c9-4dea-90d3-eb85bd2353b1": {
+      "ProjectGuid": "88c46624-97c9-4dea-90d3-eb85bd2353b1",
+      "DisplayName": "TrainTicketProjectwithCore",
+      "ColorIndex": 1
+    },
+    "6712cd48-26e2-4c7e-ba0b-c402a0cfac39": {
+      "ProjectGuid": "6712cd48-26e2-4c7e-ba0b-c402a0cfac39",
+      "DisplayName": "TrainTicketProjectwithAngular",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}

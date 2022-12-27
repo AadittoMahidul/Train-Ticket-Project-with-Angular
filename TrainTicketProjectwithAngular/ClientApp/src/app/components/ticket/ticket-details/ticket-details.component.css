@@ -1,0 +1,10 @@
+.wrap {
+    padding: 20px;
+    
+}
+.row {
+    display: grid;
+    grid-template-columns: 120px auto;
+    margin: 15px 0;
+
+}

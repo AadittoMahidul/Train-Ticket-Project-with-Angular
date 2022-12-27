@@ -1,0 +1,10 @@
+<div mat-dialog-title color="warn">
+    Confirm delete
+  </div>
+  <mat-dialog-content>
+    <strong>Are you want to sure delete this item?</strong>
+  </mat-dialog-content>
+  <mat-dialog-actions class="right">
+    <button mat-button [mat-dialog-close]="false" cdkFocusInitial><mat-icon>cancel</mat-icon>Cancel</button>
+    <button mat-raised-button color="warn" [mat-dialog-close]="true"><mat-icon>delete_sweep</mat-icon>Confirm</button>
+  </mat-dialog-actions>

@@ -1,0 +1,14 @@
+.form-container {
+    width: 65%;
+    margin: 25px auto;
+}
+.f-w
+{
+    width: 100%;
+}
+@media screen and (max-width: 600px) {
+    .form-container {
+        width: 97.5%;
+        margin: 25px auto;
+    }
+  } 

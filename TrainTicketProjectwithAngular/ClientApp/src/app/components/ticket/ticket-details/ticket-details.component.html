@@ -1,0 +1,72 @@
+<mat-card class="mat-elevation-z3">
+    <mat-card-header>
+
+        <img mat-card-avatar src="../../../../assets/ticket-svgrepo-com1.svg" />
+
+        <mat-card-title>Ticket Details View </mat-card-title>
+        <mat-card-subtitle>Ticket & Items</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div *ngIf="ticket" class="wrap">
+            
+            <div class="row">
+                <mat-label>Passenger Name</mat-label>
+                <div style="padding-left: 60px;"><a>: </a>{{ticket.passenger?.passengerName}}</div>
+            </div>
+            <div class="row">
+                <mat-label>Passenger Phone</mat-label>
+                <div style="padding-left: 60px;"><a>: </a>{{ticket.passenger?.phone}}</div>
+            </div>
+            <div class="row">
+                <mat-label>Passenger Email</mat-label>
+                <div style="padding-left: 60px;"><a>: </a>{{ticket.passenger?.email}}</div>
+            </div>
+            <div class="row">
+                <mat-label>Ticket Category</mat-label>
+                <div style="padding-left: 60px;"><a>: </a>{{getCategoryName(ticket.category)}}</div>
+            </div>
+            <div class="row">
+                <mat-label>Journey Date</mat-label>
+                <div style="padding-left: 60px;"><a>: </a>{{ticket.journeyDate| date: 'yyyy-MMM-dd'}}</div>
+            </div>
+        </div>
+        <div class="wrap">
+            
+            <h2>Items</h2>
+            <mat-table [dataSource]="dataSource">
+                <ng-container matColumnDef="train">
+                    <mat-header-cell *matHeaderCellDef>Train Name</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{element.train.trainName}}</mat-cell>
+                </ng-container>
+
+                <!-- <ng-container matColumnDef="category">
+                    <mat-header-cell *matHeaderCellDef>Ticket Category </mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{element.category}}</mat-cell>
+                </ng-container> -->
+
+                <!-- <ng-container matColumnDef="price">
+                    <mat-header-cell *matHeaderCellDef>Price</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{element.ticket.price}}</mat-cell>
+                </ng-container> -->
+
+                <ng-container matColumnDef="quantity">
+                    <mat-header-cell *matHeaderCellDef>Ticket quantity by this passenger</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{element.quantity}}</mat-cell>
+                </ng-container>
+
+                <!-- <ng-container matColumnDef="amount">
+                    <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+                    <mat-cell *matCellDef="let element">{{element.price*element.quantity}}</mat-cell>
+                </ng-container> -->
+
+                <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+
+            </mat-table>
+        </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-flat-button [routerLink]="['/tickets']">Back to list</a>
+    </mat-card-actions>
+    
+</mat-card>

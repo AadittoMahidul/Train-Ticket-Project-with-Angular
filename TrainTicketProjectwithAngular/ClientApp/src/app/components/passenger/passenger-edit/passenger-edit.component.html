@@ -1,0 +1,44 @@
+<mat-card class="mat-elevation-z3">
+    <mat-card-header>
+
+        <img mat-card-avatar src="../../../../assets/diesel-train-svgrepo-com.svg" />
+
+        <mat-card-title>Edit Passenger</mat-card-title>
+        <mat-card-subtitle>Passenger edit form</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+        <form [formGroup]="passengerForm" class="form-container" (ngSubmit)="save()">
+            <mat-form-field appearance="fill" class="f-w">
+                <mat-label>Passenger Name</mat-label>
+                <input matInput formControlName="passengerName">
+                <mat-error *ngIf="passengerForm.controls['passengerName'].hasError('required')"><strong>Passenger
+                        name</strong> is required</mat-error>
+                <mat-error *ngIf="passengerForm.controls['passengerName'].hasError('maxlength')"><strong>Passenger
+                        name</strong> 40 chars max</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="f-w">
+                <mat-label>Phone</mat-label>
+                <textarea matInput formControlName="phone"></textarea>
+                <mat-error *ngIf="passengerForm.controls['phone'].hasError('required')"><strong>Phone</strong> is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="f-w">
+                <mat-label>E-mail</mat-label>
+                <input matInput formControlName="email">
+                <mat-error *ngIf="passengerForm.controls['email'].hasError('required')"><strong>E-mail</strong> is required</mat-error>
+                <mat-error *ngIf="passengerForm.controls['email'].hasError('maxlength')"><strong>E-mail</strong> 50 chars max</mat-error>
+                <mat-error *ngIf="passengerForm.controls['email'].hasError('email')"><strong>E-mail</strong> not valid</mat-error>
+            </mat-form-field>
+            
+            <div class="f-w">
+               <button type="submit" mat-raised-button color="primary" [disabled]="passengerForm.invalid"><mat-icon>update</mat-icon>Update</button>
+            </div>
+        </form>
+
+
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-flat-button [routerLink]="['/passengers']">Back to list</a>
+    </mat-card-actions>
+</mat-card>
+

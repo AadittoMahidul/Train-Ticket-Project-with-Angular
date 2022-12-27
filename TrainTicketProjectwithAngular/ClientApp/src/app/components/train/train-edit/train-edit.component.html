@@ -1,0 +1,62 @@
+<mat-card class="mat-elevation-z3">
+    <mat-card-header>
+
+        <img mat-card-avatar src="../../../../assets/diesel-train-svgrepo-com.svg" />
+
+        <mat-card-title>Edit Train</mat-card-title>
+        <mat-card-subtitle>Update train entry</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+
+        <!-- <div *ngIf="train"> -->
+            <form [formGroup]="trainForm" class="form-container" (ngSubmit)="save()">
+                <mat-form-field appearance="fill" class="f-w mb-1">
+                    <mat-label>Train Name</mat-label>
+                    <input matInput formControlName="trainName">
+                    <mat-error *ngIf="trainForm.controls['trainName'].hasError('required')">
+                        <strong>Train name</strong> required
+                    </mat-error>
+                </mat-form-field>
+    
+                <mat-form-field appearance="fill" class="f-w mb-1">
+                    <mat-label>Starting Point</mat-label>
+                    <input matInput formControlName="startingPoint">
+                    <mat-error *ngIf="trainForm.controls['startingPoint'].hasError('required')"><strong>Starting
+                            Point</strong> is required</mat-error>
+                </mat-form-field>
+    
+                <mat-form-field appearance="fill" class="f-w mb-1">
+                    <mat-label>Destination</mat-label>
+                    <input matInput formControlName="destination">
+                    <mat-error *ngIf="trainForm.controls['destination'].hasError('required')"><strong>Destination</strong>
+                        is required</mat-error>
+                </mat-form-field>
+    
+                <div class="f-w-i mb-1">
+                    <img src="{{imgPath}}/Pictures/{{train.picture}}" class="img" *ngIf="train" />
+                    <mat-form-field appearance="fill" class="f-w">
+    
+                        <mat-label>Picture</mat-label>
+                        <button mat-icon-button matPrefix (click)="f_input.click()">
+                            <mat-icon>attach_file</mat-icon>
+                        </button>
+                        <input type="text" readonly matInput formControlName="picture" />
+                        <input type="file" multiple hidden #f_input (change)="handleFileInputChange($event)" />
+                        <mat-error>this field is required</mat-error>
+                    </mat-form-field>
+                </div>
+    
+                <div class="f-w mb-1">
+                    <mat-checkbox formControlName="isAvailable" class="c-m">Available</mat-checkbox>
+                </div>
+                <div class="f-w mb-1">
+                    <button type="submit" mat-raised-button color="primary" [disabled]="trainForm.invalid"><mat-icon>save</mat-icon>Save</button>
+                </div>
+            </form>
+        <!-- </div> -->
+    </mat-card-content>
+
+    <mat-card-actions>
+        <a mat-flat-button [routerLink]="['/trains']">Back to list</a>
+    </mat-card-actions>
+</mat-card>
